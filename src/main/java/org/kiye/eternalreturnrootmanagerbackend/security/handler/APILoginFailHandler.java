@@ -1,0 +1,35 @@
+package org.kiye.eternalreturnrootmanagerbackend.security.handler;
+
+import com.google.gson.Gson;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import lombok.extern.log4j.Log4j2;
+import org.springframework.security.core.AuthenticationException;
+import org.springframework.security.web.authentication.AuthenticationFailureHandler;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.Map;
+
+@Log4j2
+public class APILoginFailHandler implements AuthenticationFailureHandler {
+
+    @Override
+    public void onAuthenticationFailure(final HttpServletRequest request,
+                                        final HttpServletResponse response,
+                                        final AuthenticationException exception)
+            throws IOException, ServletException {
+
+
+        Gson gson = new Gson();
+
+        String jsonStr = gson.toJson(Map.of("error", "Login Error!!"));
+
+        response.setContentType("application/json"); // 상태코드 따로 안두면 200임
+        PrintWriter printWriter = response.getWriter();
+        printWriter.print(jsonStr);
+        printWriter.close();
+
+    }
+}
