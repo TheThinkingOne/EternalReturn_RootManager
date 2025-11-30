@@ -58,6 +58,8 @@ public class LumiaRegions {
     // 아이템 개수는 필요없을듯
 
     // 지역 내에 야생동물 뭐뭐 나오는지 그냥 여기에 써놓는게 나을듯(1일차아침, 밤 기준)
-
+    @OneToMany(mappedBy = "region")
+    @Builder.Default
+    private List<LumiaRegionAnimalSpawn> lumiaRegionAnimalSpawns = new ArrayList<>();
 
 }

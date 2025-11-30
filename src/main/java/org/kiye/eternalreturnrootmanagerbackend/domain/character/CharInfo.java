@@ -67,20 +67,11 @@ public class CharInfo {
     @Builder.Default
     private List<CharSkills> charSkills = new ArrayList<>();
 
-
     //
-
-
     // ex 시작체력, 레벨당체력, 레벨당 스증, 레벨당 방어력 등등
-
-
     /*// Q W E R, 패시브
     @Column(nullable = false, length = 50)
     private String charSkillName;*/
-
     // 스킬마다 스킬레벨당 데미지 혹은 보호막량, 치유량 이런거 어떻게 설계하지?
-
-
-
 
 }
