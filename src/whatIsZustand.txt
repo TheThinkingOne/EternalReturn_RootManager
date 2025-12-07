@@ -1,0 +1,14 @@
+Zustand 는 무엇인가?
+
+=> “리액트에서 전역 상태(global state)를 아주 간단하게 관리하게 도와주는 라이브러리”
+
+기존 방법들:
+
+Redux → 너무 복잡, 보일러플레이트 많음
+Context API → props drilling 해결되지만, 전역으로 많이 쓰면 성능 저하
+Recoil → 보조적으로는 좋지만 개발자 커뮤니티 규모가 작음
+
+리액트 코드에 거의 영향을 안 줌
+Redux처럼 복잡한 설정이 없음.
+Re-render 최적화가 매우 좋음
+TypeScript에 최적화됨
