@@ -2,7 +2,9 @@ package org.kiye.eternalreturnrootmanagerbackend.domain.character;
 
 import jakarta.persistence.*;
 import lombok.*;
+import org.kiye.eternalreturnrootmanagerbackend.domain.common.BaseTimeEntity;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,7 +14,7 @@ import java.util.List;
 @AllArgsConstructor
 @Table(name = "char_skills")
 @Builder
-public class CharSkills {
+public class CharSkills extends BaseTimeEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

@@ -3,9 +3,11 @@ package org.kiye.eternalreturnrootmanagerbackend.domain.character;
 import jakarta.persistence.*;
 import lombok.*;
 import lombok.extern.log4j.Log4j2;
+import org.kiye.eternalreturnrootmanagerbackend.domain.common.BaseTimeEntity;
 import org.kiye.eternalreturnrootmanagerbackend.domain.item.WeaponType;
 import org.springframework.retry.annotation.CircuitBreaker;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,7 +18,7 @@ import java.util.List;
 @Log4j2
 @Builder
 @AllArgsConstructor
-public class CharInfo {
+public class CharInfo extends BaseTimeEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -73,5 +75,7 @@ public class CharInfo {
     @Column(nullable = false, length = 50)
     private String charSkillName;*/
     // 스킬마다 스킬레벨당 데미지 혹은 보호막량, 치유량 이런거 어떻게 설계하지?
+
+
 
 }

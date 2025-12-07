@@ -2,6 +2,9 @@ package org.kiye.eternalreturnrootmanagerbackend.domain.character;
 
 import jakarta.persistence.*;
 import lombok.*;
+import org.kiye.eternalreturnrootmanagerbackend.domain.common.BaseTimeEntity;
+
+import java.time.LocalDateTime;
 
 // 다계수 스킬 가진 캐릭터를 위한 엔터티
 @Entity
@@ -10,7 +13,7 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class CharSkillScaling {
+public class CharSkillScaling extends BaseTimeEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

@@ -2,7 +2,9 @@ package org.kiye.eternalreturnrootmanagerbackend.domain.character;
 
 import jakarta.persistence.*;
 import lombok.*;
+import org.kiye.eternalreturnrootmanagerbackend.domain.common.BaseTimeEntity;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,7 +15,7 @@ import java.util.List;
 @Table(name = "char_skill_ability")
 @Builder
 // 스킬레벨별 스킬 데미지, 힐량, 보호막량 수치 등등 정하는 엔터티
-public class CharSkillAbilityPerLevel {
+public class CharSkillAbilityPerLevel extends BaseTimeEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -56,6 +58,5 @@ public class CharSkillAbilityPerLevel {
     @OneToMany(mappedBy = "skillLevel", cascade = CascadeType.ALL, orphanRemoval = true)
     @Builder.Default
     private List<CharSkillScaling> scalings = new ArrayList<>();*/
-
 
 }

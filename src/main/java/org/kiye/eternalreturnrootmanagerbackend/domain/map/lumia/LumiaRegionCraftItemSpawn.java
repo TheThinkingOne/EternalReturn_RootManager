@@ -2,7 +2,10 @@ package org.kiye.eternalreturnrootmanagerbackend.domain.map.lumia;
 
 import jakarta.persistence.*;
 import lombok.*;
+import org.kiye.eternalreturnrootmanagerbackend.domain.common.BaseTimeEntity;
 import org.kiye.eternalreturnrootmanagerbackend.domain.item.CraftItems;
+
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "lumia_region_craft_spawn")
@@ -12,7 +15,7 @@ import org.kiye.eternalreturnrootmanagerbackend.domain.item.CraftItems;
 @AllArgsConstructor
 @Builder
 // 루미아섬 지역별 아이템 나오는 거 작성하는 엔티티
-public class LumiaRegionCraftItemSpawn {
+public class LumiaRegionCraftItemSpawn extends BaseTimeEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

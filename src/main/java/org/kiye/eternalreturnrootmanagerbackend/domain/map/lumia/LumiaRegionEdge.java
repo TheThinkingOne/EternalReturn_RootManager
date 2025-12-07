@@ -3,14 +3,17 @@ package org.kiye.eternalreturnrootmanagerbackend.domain.map.lumia;
 
 import jakarta.persistence.*;
 import lombok.*;
+import org.kiye.eternalreturnrootmanagerbackend.domain.common.BaseTimeEntity;
 
+import java.time.LocalDateTime;
+
+@Builder
 @Entity
 @Table(name = "lumia_region_edge")
 @Getter @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder
-public class LumiaRegionEdge {
+public class LumiaRegionEdge extends BaseTimeEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -33,6 +36,7 @@ public class LumiaRegionEdge {
     // (옵션) 이동 거리나 시간 비용 – 나중에 A*, Dijkstra 쓸 때 사용
     @Column(nullable = false)
     @Builder.Default
-    private int cost;
+    private int cost = 1;
+
 
 }

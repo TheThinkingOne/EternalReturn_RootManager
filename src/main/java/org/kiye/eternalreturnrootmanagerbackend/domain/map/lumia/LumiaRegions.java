@@ -4,7 +4,9 @@ import jakarta.persistence.*;
 import lombok.*;
 import lombok.extern.log4j.Log4j2;
 import org.kiye.eternalreturnrootmanagerbackend.domain.ErMapMode;
+import org.kiye.eternalreturnrootmanagerbackend.domain.common.BaseTimeEntity;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,7 +19,7 @@ import java.util.List;
 @Builder
 @AllArgsConstructor
 // 루미아 섬 지역 엔티티
-public class LumiaRegions {
+public class LumiaRegions extends BaseTimeEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -61,5 +63,6 @@ public class LumiaRegions {
     @OneToMany(mappedBy = "region")
     @Builder.Default
     private List<LumiaRegionAnimalSpawn> lumiaRegionAnimalSpawns = new ArrayList<>();
+
 
 }

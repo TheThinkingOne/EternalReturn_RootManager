@@ -2,6 +2,9 @@ package org.kiye.eternalreturnrootmanagerbackend.domain.item;
 
 import jakarta.persistence.*;
 import lombok.*;
+import org.kiye.eternalreturnrootmanagerbackend.domain.common.BaseTimeEntity;
+
+import java.time.LocalDateTime;
 
 @Entity
 @Getter @Setter
@@ -9,7 +12,7 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class UniqueEffect {
+public class UniqueEffect extends BaseTimeEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -29,7 +32,5 @@ public class UniqueEffect {
     // 설명텍스트
     @Column(nullable = false, length = 500)
     private String uniqueEffectDescription;
-
-
 
 }

@@ -2,6 +2,9 @@ package org.kiye.eternalreturnrootmanagerbackend.domain.item;
 
 import jakarta.persistence.*;
 import lombok.*;
+import org.kiye.eternalreturnrootmanagerbackend.domain.common.BaseTimeEntity;
+
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "equip_items_recipe")
@@ -9,7 +12,7 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class EquipItemRecipe {
+public class EquipItemRecipe extends BaseTimeEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -29,5 +32,6 @@ public class EquipItemRecipe {
     // 예를들어 어떤 보라템에 원석이 2개 필요할수도 있으니 이런거 따지렴녀
     @Column(nullable = false)
     private int neededCraftItemQuantity;
+
 
 }

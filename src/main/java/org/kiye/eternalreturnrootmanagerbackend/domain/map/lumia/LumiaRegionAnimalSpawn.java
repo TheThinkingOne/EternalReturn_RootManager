@@ -2,6 +2,9 @@ package org.kiye.eternalreturnrootmanagerbackend.domain.map.lumia;
 
 import jakarta.persistence.*;
 import lombok.*;
+import org.kiye.eternalreturnrootmanagerbackend.domain.common.BaseTimeEntity;
+
+import java.time.LocalDateTime;
 
 @Entity
 @Getter @Setter
@@ -9,7 +12,7 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class LumiaRegionAnimalSpawn {
+public class LumiaRegionAnimalSpawn extends BaseTimeEntity {
 
     // 루트 설정하고 마지막 루트에서 1일차에 파밍할 수 있는
     // 야생동물 보여주기 위한 엔터티
@@ -26,7 +29,6 @@ public class LumiaRegionAnimalSpawn {
 
     @Column(nullable = false)
     private int count;
-
 
 
 }
