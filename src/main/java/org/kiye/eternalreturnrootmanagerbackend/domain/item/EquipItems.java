@@ -76,6 +76,12 @@ public class EquipItems extends BaseTimeEntity {
 
     private double recoveryIncrease; // 주는 회복 증가
 
+    // 아이템 5개 골랐을때 통상적으로 보는 능력치들
+    // EX: 공격력, 체력, 공격속도, 치확, 치피 이속 이런거는 일반 능력치 로 보여주고
+    // 특수 능력치 EX: 주는회복증가, 강인함 등등 도 따로 보여주도록 하자
+
+
+
     // 여기서부턴 아이템 고유효과
     private String healReduce40; // 약치감
     private String healReduce60; // 강치감

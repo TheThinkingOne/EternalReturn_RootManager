@@ -4,11 +4,17 @@ import lombok.RequiredArgsConstructor;
 import org.kiye.eternalreturnrootmanagerbackend.domain.item.EquipItemRecipe;
 import org.kiye.eternalreturnrootmanagerbackend.domain.item.EquipItemSlot;
 import org.kiye.eternalreturnrootmanagerbackend.domain.item.WeaponType;
+import org.kiye.eternalreturnrootmanagerbackend.dto.EquipItemDTO;
+import org.kiye.eternalreturnrootmanagerbackend.dto.ItemSelectResponseDTO;
 import org.kiye.eternalreturnrootmanagerbackend.repository.EquipItemRepo;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.EnumMap;
+import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/erRootManager/items")
@@ -17,26 +23,28 @@ public class ItemSelectController {
 
     private final EquipItemRepo equipItemRepo;
 
-    // 해당 캐릭터 무기군에 맞는 보라템 무기 목록
-    @GetMapping("/weapons") // 한 getMapping 안에 캐릭터 무기군별 무기목록과 나머지 4개 장비들 목록 띄우는걸로 해야함
-    public List<EquipItemDTO> getWeaponItems(@RequestParam WeaponType weaponType) {
-        return equipItemRepo.findBySlotAndWeaponType(
-                EquipItemSlot.WEAPON,
-                weaponType
-        ).stream()
-                .map(EquipItemDTO::from)
-                .toList();
+    @GetMapping("/item-select")
+    public ItemSelectResponseDTO getItemSelect(
+            @RequestParam String charCode,       // 지금은 안 써도 됨(확장용)
+            @RequestParam WeaponType weaponType
+    ) {
+        Map<EquipItemSlot, List<EquipItemDTO>> map = new EnumMap<>(EquipItemSlot.class);
+
+        // 무기: 무기군 필터 필수
+        map.put(EquipItemSlot.WEAPON,
+                equipItemRepo
+                        .findBySlotAndWeaponType(EquipItemSlot.WEAPON, weaponType)
+                        .stream().map(EquipItemDTO::from).toList()
+        );
+
+        // 나머지 장비: 슬롯별 전체(캐릭터 제한 없으면)
+        for (EquipItemSlot slot : List.of(EquipItemSlot.CHEST, EquipItemSlot.HEAD, EquipItemSlot.ARM, EquipItemSlot.LEG)) {
+            map.put(slot,
+                    equipItemRepo.findByEquipItemSlot(slot)
+                            .stream().map(EquipItemDTO::from).toList()
+            );
+        }
+
+        return new ItemSelectResponseDTO(weaponType, map);
     }
-
-    // 슬롯별(상의, 머리, 팔, 다리) 장비 목록
-    @GetMapping("/equips")
-    public List<EquipItemDto> getEquipItems(@RequestParam EquipItemSlot slot) {
-        return equipItemsRepository.findByEquipItemSlot(slot).stream()
-                .map(EquipItemDto::from)
-                .toList();
-    }
-
-
-
-
 }

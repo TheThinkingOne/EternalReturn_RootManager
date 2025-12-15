@@ -8,6 +8,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.List;
 
 public interface EquipItemRepo extends JpaRepository<EquipItems, Long> {
-    List<EquipItems> findBySlot(EquipItemSlot equipItemSlot);
+    List<EquipItems> findByEquipItemSlot(EquipItemSlot equipItemSlot);
     List<EquipItems> findBySlotAndWeaponType(EquipItemSlot equipItemSlot, WeaponType weaponType);
 }
