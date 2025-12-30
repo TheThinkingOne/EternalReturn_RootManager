@@ -1,6 +1,7 @@
-package org.kiye.eternalreturnrootmanagerbackend.dto;
+package org.kiye.eternalreturnrootmanagerbackend.dto.character;
 
 import org.kiye.eternalreturnrootmanagerbackend.domain.item.WeaponType;
+import org.kiye.eternalreturnrootmanagerbackend.dto.SkillFigureDTO;
 
 import java.util.List;
 

@@ -34,12 +34,12 @@ public class JWTUtil {
     }
 
     // JWT 토큰 검증 메서드
-    public static Map<String, Object> validateToken(String token) {
+    /*public static Map<String, Object> validateToken(String token) {
         try {
             SecretKey secretKey = Keys.hmacShaKeyFor(key.getBytes(StandardCharsets.UTF_8));
 
             // 토큰 파싱 및 검증
-            return Jwts.parserBuilder()
+            return Jwts.parseBuilder()
                     .setSigningKey(secretKey)
                     .build()
                     .parseClaimsJws(token) // 파싱 및 검증, 실패시 에러
@@ -55,5 +55,33 @@ public class JWTUtil {
         } catch (Exception e) {
             throw new CustomJWTException("Unknown error occurred while validating JWT");
         }
+    }*/
+
+
+    public static Map<String, Object> validateToken(String token) {
+        try {
+            SecretKey secretKey = Keys.hmacShaKeyFor(key.getBytes(StandardCharsets.UTF_8));
+
+            Claims claims = Jwts.parser()              // ✅ parseBuilder() 아님
+                    .verifyWith(secretKey)            // ✅ setSigningKey() 아님(0.13.x)
+                    .build()
+                    .parseSignedClaims(token)         // ✅ parseClaimsJws() -> parseSignedClaims()
+                    .getPayload();
+
+            return claims;
+
+        } catch (io.jsonwebtoken.MalformedJwtException e) {
+            throw new CustomJWTException("Malformed JWT token");
+        } catch (io.jsonwebtoken.ExpiredJwtException e) {
+            throw new CustomJWTException("JWT token has expired");
+        } catch (io.jsonwebtoken.UnsupportedJwtException e) {
+            throw new CustomJWTException("Unsupported JWT token");
+        } catch (io.jsonwebtoken.JwtException e) {
+            throw new CustomJWTException("Invalid JWT token");
+        } catch (Exception e) {
+            throw new CustomJWTException("Unknown error occurred while validating JWT");
+        }
     }
+
+
 }

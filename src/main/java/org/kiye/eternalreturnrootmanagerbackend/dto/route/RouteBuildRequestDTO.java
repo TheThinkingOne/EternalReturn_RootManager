@@ -1,4 +1,4 @@
-package org.kiye.eternalreturnrootmanagerbackend.dto;
+package org.kiye.eternalreturnrootmanagerbackend.dto.route;
 
 import org.kiye.eternalreturnrootmanagerbackend.domain.item.WeaponType;
 

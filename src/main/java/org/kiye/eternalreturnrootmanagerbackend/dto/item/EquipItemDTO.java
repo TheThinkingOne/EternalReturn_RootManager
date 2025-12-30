@@ -1,4 +1,4 @@
-package org.kiye.eternalreturnrootmanagerbackend.dto;
+package org.kiye.eternalreturnrootmanagerbackend.dto.item;
 
 import org.kiye.eternalreturnrootmanagerbackend.domain.item.EquipItemSlot;
 import org.kiye.eternalreturnrootmanagerbackend.domain.item.EquipItems;
@@ -24,11 +24,16 @@ public record EquipItemDTO(
         double hp,
         double hpPerLevel,
         double defense,
+
+        // 유틸
         double attackSpeed,
         double moveSpeed,
         double cooldown,
+
+        // 치명타 관련
         double critRate, // 치확
         double critDmg, // 치피
+
         // 고유효과는 이름정도만 (목록에서는 툴팁 간단 표시용)
         String uniqueEffectName
 
@@ -52,9 +57,6 @@ public record EquipItemDTO(
                 items.getCritRate(),
                 items.getCritDmg(),
                 items.getUniqueEffect() != null ? items.getUniqueEffect().getName() : null
-
-
-
-        )
+        );
     }
 }

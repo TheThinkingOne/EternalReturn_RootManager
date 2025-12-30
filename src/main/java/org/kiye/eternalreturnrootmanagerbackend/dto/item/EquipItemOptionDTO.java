@@ -1,4 +1,4 @@
-package org.kiye.eternalreturnrootmanagerbackend.dto;
+package org.kiye.eternalreturnrootmanagerbackend.dto.item;
 
 import org.kiye.eternalreturnrootmanagerbackend.domain.item.EquipItemSlot;
 import org.kiye.eternalreturnrootmanagerbackend.domain.item.WeaponType;

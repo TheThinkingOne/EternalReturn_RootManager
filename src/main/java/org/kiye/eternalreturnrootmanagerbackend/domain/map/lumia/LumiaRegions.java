@@ -39,7 +39,7 @@ public class LumiaRegions extends BaseTimeEntity {
     private ErMapMode map;
 
     // 어느지역에 무슨 제작템이 있는지 만들기 위해 LumiaRegionCraftItemSpawn 과 연결
-    @OneToMany(mappedBy = "region")
+    @OneToMany(mappedBy = "lumiaRegions")
     @Builder.Default
     private List<LumiaRegionCraftItemSpawn> spawnItems = new ArrayList<>();
 
@@ -60,7 +60,7 @@ public class LumiaRegions extends BaseTimeEntity {
     // 아이템 개수는 필요없을듯
 
     // 지역 내에 야생동물 뭐뭐 나오는지 그냥 여기에 써놓는게 나을듯(1일차아침, 밤 기준)
-    @OneToMany(mappedBy = "region")
+    @OneToMany(mappedBy = "lumiaRegions")
     @Builder.Default
     private List<LumiaRegionAnimalSpawn> lumiaRegionAnimalSpawns = new ArrayList<>();
 

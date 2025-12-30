@@ -22,7 +22,7 @@ public class LumiaRegionAnimalSpawn extends BaseTimeEntity {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "region_id", nullable = false)
-    private LumiaRegions region;
+    private LumiaRegions lumiaRegions;
 
     @Column(nullable = false, length = 50)
     private String animalName;

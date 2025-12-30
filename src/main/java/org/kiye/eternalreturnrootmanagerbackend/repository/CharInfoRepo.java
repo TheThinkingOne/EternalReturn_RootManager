@@ -9,5 +9,5 @@ import java.util.Optional;
 // 이부분 Long 으로 빼는게 맞나?
 public interface CharInfoRepo extends JpaRepository<CharInfo, Long> {
     Optional<CharInfo> findByCharCode(String charCode);
-    List<CharInfo> findAllBy();
+    // List<CharInfo> findAllBy();
 }

@@ -1,4 +1,4 @@
-package org.kiye.eternalreturnrootmanagerbackend.dto;
+package org.kiye.eternalreturnrootmanagerbackend.dto.character;
 
 public record CharStatPerLevelDTO(
         int level,

@@ -31,6 +31,10 @@ public class CharInfo extends BaseTimeEntity {
     @Column(nullable = false, length = 50, unique = true)
     private String charCode;
 
+    // 캐릭터 초상화 누를 시 이동 위한 필요
+    @Column(length = 300)
+    private String portraitUrl;
+
     // 해당 캐릭터가 사용할 수 있는 무기군 나타내는걸
     // 캐릭터 정보 엔터티 컬럼에서 꺼내는게 맞을까? (이렇게 설계하는게 맞나?)
 //    @Enumerated(EnumType.STRING)
@@ -56,13 +60,12 @@ public class CharInfo extends BaseTimeEntity {
     private double baseAtkSpd; // 기본공속
     private double baseAtkRange; // 기본공격사거리
 
-    // 성장능력치들
+    // 아래는 캐릭터들의 공통적으로 가지고 있는 기본 성장 능력치들
     private double hpPerLevel; // 성장체력
     private double defPerLevel; // 성장방어력
     private double atkPerLevel; // 성장공격력
     private double atkSpdPerLevel; // 성장공속
     private double skillAmpPerLevel; // 성장스증
-    // 등등
 
     // 캐릭터별로 성장 스증이 있는 캐릭, 성장 공격력이 있는 캐릭이 있는데 이거 어떻게 할까
     @OneToMany(mappedBy = "character", cascade = CascadeType.ALL, orphanRemoval = true)

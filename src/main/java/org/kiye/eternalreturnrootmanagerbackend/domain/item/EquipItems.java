@@ -20,7 +20,7 @@ public class EquipItems extends BaseTimeEntity {
     private Long id;
 
     @Column(nullable = false, length = 100)
-    private String EquipItemName;
+    private String equipItemName;
 
     @Enumerated(EnumType.STRING)
     @Column(nullable = false, length = 20)

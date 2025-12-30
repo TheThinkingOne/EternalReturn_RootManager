@@ -1,4 +1,4 @@
-package org.kiye.eternalreturnrootmanagerbackend.dto;
+package org.kiye.eternalreturnrootmanagerbackend.dto.character;
 
 import org.kiye.eternalreturnrootmanagerbackend.domain.character.CharInfo;
 import org.kiye.eternalreturnrootmanagerbackend.domain.item.WeaponType;

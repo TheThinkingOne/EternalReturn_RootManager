@@ -1,11 +1,10 @@
 package org.kiye.eternalreturnrootmanagerbackend.controller;
 
 import lombok.RequiredArgsConstructor;
-import org.kiye.eternalreturnrootmanagerbackend.domain.item.EquipItemRecipe;
 import org.kiye.eternalreturnrootmanagerbackend.domain.item.EquipItemSlot;
 import org.kiye.eternalreturnrootmanagerbackend.domain.item.WeaponType;
-import org.kiye.eternalreturnrootmanagerbackend.dto.EquipItemDTO;
-import org.kiye.eternalreturnrootmanagerbackend.dto.ItemSelectResponseDTO;
+import org.kiye.eternalreturnrootmanagerbackend.dto.item.EquipItemDTO;
+import org.kiye.eternalreturnrootmanagerbackend.dto.item.ItemSelectResponseDTO;
 import org.kiye.eternalreturnrootmanagerbackend.repository.EquipItemRepo;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -33,7 +32,7 @@ public class ItemSelectController {
         // 무기: 무기군 필터 필수
         map.put(EquipItemSlot.WEAPON,
                 equipItemRepo
-                        .findBySlotAndWeaponType(EquipItemSlot.WEAPON, weaponType)
+                        .findByEquipItemSlotAndWeaponType(EquipItemSlot.WEAPON, weaponType)
                         .stream().map(EquipItemDTO::from).toList()
         );
 
