@@ -17,13 +17,13 @@ import java.util.List;
 import static org.springframework.http.HttpStatus.NOT_FOUND;
 
 @RestController
-@RequestMapping("/erRootManager/characters")
+@RequestMapping("/er_rootmanager/selectchar")
 @RequiredArgsConstructor
 public class CharacterController {
 
     private final CharInfoRepo charInfoRepo;
 
-    // 여기에 주소 넣어야 하나?
+    // 루트 제작시 캐릭터 선택 창 : 전체 캐릭터 목록 보여주기
     @GetMapping
     public List<CharSummaryDTO> getChars() {
         return charInfoRepo.findAll().stream()

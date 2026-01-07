@@ -16,7 +16,7 @@ import java.util.List;
 import java.util.Map;
 
 @RestController
-@RequestMapping("/erRootManager/items")
+@RequestMapping("/er_rootmanager/items")
 @RequiredArgsConstructor
 public class ItemSelectController {
 
@@ -29,14 +29,14 @@ public class ItemSelectController {
     ) {
         Map<EquipItemSlot, List<EquipItemDTO>> map = new EnumMap<>(EquipItemSlot.class);
 
-        // 무기: 무기군 필터 필수
+        // 무기: 무기군 필터 필수(해당 캐릭터가 사용할 수 있는 무기군의 무기 아이템만 불러오기)
         map.put(EquipItemSlot.WEAPON,
                 equipItemRepo
                         .findByEquipItemSlotAndWeaponType(EquipItemSlot.WEAPON, weaponType)
                         .stream().map(EquipItemDTO::from).toList()
         );
 
-        // 나머지 장비: 슬롯별 전체(캐릭터 제한 없으면)
+        // 나머지 장비: 옷~ 다리 슬롯별 전체
         for (EquipItemSlot slot : List.of(EquipItemSlot.CHEST, EquipItemSlot.HEAD, EquipItemSlot.ARM, EquipItemSlot.LEG)) {
             map.put(slot,
                     equipItemRepo.findByEquipItemSlot(slot)
