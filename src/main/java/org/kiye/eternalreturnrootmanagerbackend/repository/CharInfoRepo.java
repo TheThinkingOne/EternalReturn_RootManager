@@ -10,4 +10,6 @@ import java.util.Optional;
 public interface CharInfoRepo extends JpaRepository<CharInfo, Long> {
     Optional<CharInfo> findByCharCode(String charCode);
     // List<CharInfo> findAllBy();
+    // 캐릭터 출시순 번호(ex: 엠마 19 마커스 53)로 캐릭터 찾기
+    Optional<CharInfo> findByCharacterNum(Integer characterNum);
 }

@@ -27,6 +27,11 @@ public class CharInfo extends BaseTimeEntity {
     @Column(nullable = false, length = 50)
     private String charName;
 
+    // 0123 캐릭터 넘버 컬럼 추가, 이리는 캐릭터 출시일 기준으로 캐릭터 넘버(ex: 엠마 19) 가 붙음
+    // 이는 포스트맨으로 최근 90게임 전적 불러오기로 봤을 때 확인함
+    @Column(nullable = false, unique = true)
+    private Integer characterNum;
+
     // 내부 코드 (예: 'GARNET', 'EMMA' 등) 나중에 외부 API랑 매핑하기 좋음
     @Column(nullable = false, length = 50, unique = true)
     private String charCode;
