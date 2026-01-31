@@ -1,47 +1,27 @@
-// import { useState } from "react";
-// import reactLogo from "./assets/react.svg";
-// import viteLogo from "/vite.svg";
-import "./App.css";
-import "./index.css";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import MainPage from "./pages/MainPage";
+import RootMakerPage from "./pages/LumiaRootMakePage";
 
-// function App() {
-//   // const [count, setCount] = useState(0);
-
-//   // return (
-//   //   <>
-//   //     <div>
-//   //       <a href="https://vite.dev" target="_blank">
-//   //         <img src={viteLogo} className="logo" alt="Vite logo" />
-//   //       </a>
-//   //       <a href="https://react.dev" target="_blank">
-//   //         <img src={reactLogo} className="logo react" alt="React logo" />
-//   //       </a>
-//   //     </div>
-//   //     <h1>Vite + React</h1>
-//   //     <div className="card">
-//   //       <button onClick={() => setCount((count) => count + 1)}>
-//   //         count is {count}
-//   //       </button>
-//   //       <p>
-//   //         Edit <code>src/App.tsx</code> and save to test HMR
-//   //       </p>
-//   //     </div>
-//   //     <p className="read-the-docs">
-//   //       Click on the Vite and React logos to learn more
-//   //     </p>
-//   //   </>
-//   // );
-// }
-
-// tailwindcss 시험용
-function App() {
+function CobaltPage() {
   return (
-    <div className="min-h-screen flex items-center justify-center bg-slate-900">
-      <h1 className="text-3xl font-bold text-emerald-300 underline">
-        Tailwind v4 + Vite + React + TS
-      </h1>
+    <div style={{ padding: 24, color: "white" }}>
+      코발트 정보 페이지(준비중)
     </div>
   );
 }
+function CharacterDbPage() {
+  return <div style={{ padding: 24, color: "white" }}>캐릭터 DB(준비중)</div>;
+}
 
-export default App;
+export default function App() {
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<MainPage />} />
+        <Route path="/root-maker" element={<RootMakerPage />} />
+        <Route path="/cobalt" element={<CobaltPage />} />
+        <Route path="/characters" element={<CharacterDbPage />} />
+      </Routes>
+    </BrowserRouter>
+  );
+}
