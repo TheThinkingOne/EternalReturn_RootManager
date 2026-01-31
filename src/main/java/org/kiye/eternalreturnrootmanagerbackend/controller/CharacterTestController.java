@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 
+import java.util.List;
 import java.util.Map;
 
 @RestController
@@ -20,7 +21,15 @@ public class CharacterTestController {
 
     private final CharInfoRepo charInfoRepo;
 
-    // 1) characterNum 기반 조회 (외부 API 연동 중심)
+    @GetMapping("/list")
+    public List<CharWithAssetsDTO> getAllCharPortrait() {
+        return charInfoRepo.findAll()
+                .stream()
+                .map(this::toDto)
+                .toList();
+    }
+
+    // 1) characterNum 기반 조회 (외부 API 연동 중심으로)
     @GetMapping("/num/{characterNum}")
     public CharWithAssetsDTO getByNum(@PathVariable Integer characterNum) {
         CharInfo c = charInfoRepo.findByCharacterNum(characterNum)
@@ -65,7 +74,7 @@ public class CharacterTestController {
                 .atkSpdPerLevel(c.getAtkSpdPerLevel())
                 .baseAtkRange(c.getBaseAtkRange())
                 .skillAmpPerLevel(c.getSkillAmpPerLevel())
-                .portraitUrl(base + "/mini.png") // 여기 포인트!
+                .portraitUrl(base + "/mini.png") // 캐릭터 미니 초상화
                 .skillIconUrls(skillIcons)
                 .build();
     }
